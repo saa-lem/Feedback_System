@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Feedback Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; }
+        .container { width: 50%; margin: auto; background: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        h2 { text-align: center; }
+        input, textarea { width: 100%; margin: 10px 0; padding: 10px; }
+        .submit-btn { background-color: #4CAF50; color: white; border: none; padding: 10px; cursor: pointer; }
+    </style>
+    <script>
+        function validateForm() {
+            const name = document.forms["feedbackForm"]["name"].value;
+            const email = document.forms["feedbackForm"]["email"].value;
+            const rating = document.forms["feedbackForm"]["rating"].value;
+
+            if (!name || !email || !rating) {
+                alert("All fields are required.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Feedback Form</h2>
+        <form name="feedbackForm" action="submit_feedback.php" method="POST" onsubmit="return validateForm();">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="feedback" rows="5" placeholder="Your Feedback" required></textarea>
+            <input type="number" name="rating" min="1" max="5" placeholder="Rating (1-5)" required>
+            <button type="submit" class="submit-btn">Submit Feedback</button>
+        </form>
+    </div>
+</body>
+</html>
